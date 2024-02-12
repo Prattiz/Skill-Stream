@@ -1,6 +1,11 @@
 import { MessageCircle } from 'lucide-react';
 
 
+import { Header } from '../components/Header';
+import { Player } from '../components/Player';
+import { Module } from '../components/Module';
+
+
 
 export function App() {
   return (
@@ -8,14 +13,11 @@ export function App() {
     <div className="h-screen bg-zinc-950 text-zinc-50 flex justify-center items-center">
     <div className="flex w-[1100px] flex-col gap-6">
       <div className="flex items-center justify-between">
-        {/* Header */}
-        <div className="flex flex-col gap-1">
-          <h1 className="text-2xl font-bold">the Pythagorean Theorem</h1>
-          <span className="text-sm text-zinc-400">Pythagorean Theorem</span>
-        </div>
-
+        <Header/> 
+       
         <button 
-          className="flex items-center gap-2 rounded bg-violet-500 px-3 py-2 text-sm font-medium text-white hover:bg-violet-600"
+          className="flex items-center gap-2 rounded bg-violet-500 px-3 py-2 
+          text-sm font-medium text-white hover:bg-violet-600"
         >
          <MessageCircle 
           className=' w-4 h-4 '
@@ -24,22 +26,21 @@ export function App() {
         </button>
       </div>
 
-      <main className="relative flex overflow-hidden rounded-lg border border-zinc-800 bg-zinc-900 shadow">
-        <div className="flex-1">
-          videos 
-        </div>
-        <aside className="w-80 border-l border-zinc-800 bg-zinc-900 h-[600px]">
+      <main className="relative flex overflow-hidden rounded-lg border border-zinc-800 bg-zinc-900 shadow pr-80">
 
-          <div className=''>
-            <button className='flex w-full items-center gap-3 bg-zinc-800 p-4'>
-              
-            </button>
-          </div>
+        <Player/>
+
+        <aside 
+          className="absolute top-0 bottom-0 right-0 w-80 
+          border-l border-zinc-800 bg-zinc-900 divide-y-2 divide-zinc-900
+          overflow-y-scroll scrollbar-thin scrollbar-track-zinc-950 scrollbar-thumb-zinc-800"
+        >
+          <Module title='Math' amountOfClasses={3} moduleIndex={1}/>
 
         </aside>
       </main>
     </div>
   </div>
-    
+
   );
 }
