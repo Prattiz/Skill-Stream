@@ -6,14 +6,14 @@ import { Store } from './store';
 
 import './styles/global.css'
 
-import { Player } from './pages/index.tsx';
+import { App } from './pages/index.tsx';
 
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ReduxProvider store={ Store }>
-      <Player/>
+      <App/>
     </ReduxProvider>
   </React.StrictMode>
 )
