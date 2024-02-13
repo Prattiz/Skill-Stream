@@ -1,6 +1,5 @@
 import { MessageCircle } from 'lucide-react';
 
-
 import { Header } from '../components/Header';
 import { Player } from '../components/Player';
 import { Module } from '../components/Module';
@@ -36,6 +35,8 @@ export function App() {
           overflow-y-scroll scrollbar-thin scrollbar-track-zinc-950 scrollbar-thumb-zinc-800"
         >
           <Module title='Math' amountOfClasses={3} moduleIndex={1}/>
+          <Module title='English' amountOfClasses={7} moduleIndex={2}/>
+          <Module title='Biology' amountOfClasses={3} moduleIndex={3}/>
 
         </aside>
       </main>
