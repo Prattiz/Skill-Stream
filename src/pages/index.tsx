@@ -3,10 +3,14 @@ import { MessageCircle } from 'lucide-react';
 import { Header } from '../components/Header';
 import { Player } from '../components/Player';
 import { Module } from '../components/Module';
+import { useAppSelector } from '../store';
 
 
 
 export function App() {
+
+  const modules = useAppSelector(state => state.player.course.modules);
+
   return (
 
     <div className="h-screen bg-zinc-950 text-zinc-50 flex justify-center items-center">
@@ -34,9 +38,16 @@ export function App() {
           border-l border-zinc-800 bg-zinc-900 divide-y-2 divide-zinc-900
           overflow-y-scroll scrollbar-thin scrollbar-track-zinc-950 scrollbar-thumb-zinc-800"
         >
-          <Module title='Math' amountOfClasses={3} moduleIndex={1}/>
-          <Module title='English' amountOfClasses={7} moduleIndex={2}/>
-          <Module title='Biology' amountOfClasses={3} moduleIndex={3}/>
+          {modules.map((module, index) => (
+
+            <Module 
+              key={module.id}
+              title={module.title} 
+              amountOfClasses={module.lessons.length} 
+              moduleIndex={index}
+            />
+
+          ))}
 
         </aside>
       </main>
