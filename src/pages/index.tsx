@@ -22,9 +22,11 @@ export function App() {
           className="flex items-center gap-2 rounded bg-violet-500 px-3 py-2 
           text-sm font-medium text-white hover:bg-violet-600"
         >
+
          <MessageCircle 
           className=' w-4 h-4 '
          />
+         
           Leave feedback
         </button>
       </div>
@@ -38,16 +40,18 @@ export function App() {
           border-l border-zinc-800 bg-zinc-900 divide-y-2 divide-zinc-900
           overflow-y-scroll scrollbar-thin scrollbar-track-zinc-950 scrollbar-thumb-zinc-800"
         >
-          {modules.map((module, index) => (
+          {
+            modules.map((module, index) => (
 
-            <Module 
-              key={module.id}
-              title={module.title} 
-              amountOfClasses={module.lessons.length} 
-              moduleIndex={index}
-            />
+              <Module 
+                key={module.id}
+                title={module.title} 
+                amountOfClasses={module.lessons.length} 
+                moduleIndex={index}
+              />
 
-          ))}
+            ))
+          }
 
         </aside>
       </main>

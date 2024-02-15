@@ -39,9 +39,11 @@ export function Module({ title, moduleIndex, amountOfClasses}: ModulesProps){
     
             <Collapsible.Content>
                 <nav className="relative flex flex-col gap-4 p-6">
-                    {lessons.map(lesson => (
-                        <Lesson title={lesson.title} minutes={lesson.duration}/>
-                    ))}
+                    {
+                        lessons.map(lesson => (
+                            <Lesson title={lesson.title} minutes={lesson.duration}/>
+                        ))
+                    }
                 </nav>
             </Collapsible.Content>
 
