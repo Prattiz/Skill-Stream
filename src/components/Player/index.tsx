@@ -2,38 +2,48 @@ import ReactPlayer from 'react-player';
 import { useDispatch } from 'react-redux';
 import { next, useCurrentLesson } from '../../store/slices/player';
 import { useEffect } from 'react';
+import { useAppSelector } from '../../store';
+import { Loader } from 'lucide-react';
 
 
 export function Player(){
 
   const dispatch = useDispatch();
   const { currentLesson } = useCurrentLesson();
+  const isCourseLoading = useAppSelector(state => state.player.isLoading)
 
   function handlePlayNext(){
     dispatch(next())
   }
 
   useEffect(() => {
-    document.title = `Skill Stream: ${currentLesson?.title}`
+
+    if(currentLesson){
+      document.title = `Skill Stream: ${currentLesson.title}`
+    } else{
+      document.title = `Skill Stream: Carregando...`
+    }
+    
   }, [currentLesson])
 
-  if(!currentLesson){
-    return null
-  }
-
+  
     return(
-        <div className="flex-1">
+       
           <div className='w-full bg-zinc-950 aspect-video'>
-
-            <ReactPlayer
-              width="100%" 
-              height="100%" 
-              controls
-              url={`https://www.youtube.com/watch?v=${currentLesson.id}`}
-              onEnded={handlePlayNext}
-            />
-
+            {
+              isCourseLoading ? 
+                <div className="flex h-full items-center justify-center">
+                  <Loader className="w-6 h-6 text-zinc-400 animate-spin" />
+                </div>
+                :
+                <ReactPlayer
+                  width="100%" 
+                  height="100%" 
+                  controls
+                  url={`https://www.youtube.com/watch?v=${currentLesson?.id}`}
+                  onEnded={handlePlayNext}
+                />
+            }
           </div> 
-        </div>
     )
 }

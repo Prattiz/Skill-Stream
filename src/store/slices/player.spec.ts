@@ -5,7 +5,7 @@ const exampleState: playerState = {
   course: {
 
     id: 1,
-    
+
     modules: [
 
       {
@@ -26,7 +26,7 @@ const exampleState: playerState = {
       },
     ],
   },
-
+  isLoading: false,
   currentModuleIndex: 0,
   currentLessonIndex: 0,
 }
