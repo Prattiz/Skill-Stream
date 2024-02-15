@@ -26,9 +26,9 @@ export function Player(){
     
   }, [currentLesson])
 
-  
+
     return(
-       
+    
           <div className='w-full bg-zinc-950 aspect-video'>
             {
               isCourseLoading ? 
