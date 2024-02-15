@@ -13,7 +13,7 @@ export function Player(){
   }
 
   useEffect(() => {
-    document.title = `Assistindo ${currentLesson.title}`
+    document.title = `Skill Stream: ${currentLesson.title}`
   }, [currentLesson])
 
     return(
