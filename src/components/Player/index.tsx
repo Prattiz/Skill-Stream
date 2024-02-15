@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { next, useCurrentLesson } from '../../store/slices/player';
 import { useEffect } from 'react';
 
+
 export function Player(){
 
   const dispatch = useDispatch();
@@ -13,8 +14,12 @@ export function Player(){
   }
 
   useEffect(() => {
-    document.title = `Skill Stream: ${currentLesson.title}`
+    document.title = `Skill Stream: ${currentLesson?.title}`
   }, [currentLesson])
+
+  if(!currentLesson){
+    return null
+  }
 
     return(
         <div className="flex-1">

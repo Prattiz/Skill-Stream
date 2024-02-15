@@ -16,7 +16,7 @@ interface ModulesProps{
 
 export function Module({ title, moduleIndex, amountOfClasses}: ModulesProps){
 
-    const lessons = useAppSelector(state => state.player.course.modules[moduleIndex].lessons);
+    const lessons = useAppSelector(state => state.player.course?.modules[moduleIndex].lessons);
     const dispatch = useDispatch();
 
     const { currentModuleIndex, currentLessonIndex } = useAppSelector(state => {
@@ -50,7 +50,7 @@ export function Module({ title, moduleIndex, amountOfClasses}: ModulesProps){
             <Collapsible.Content>
                 <nav className="relative flex flex-col gap-4 p-6">
                     {
-                        lessons.map((lesson, lessonIndex) => {
+                        lessons && lessons.map((lesson, lessonIndex) => {
                             const isCurrent =
                                 currentModuleIndex === moduleIndex 
                                 && 

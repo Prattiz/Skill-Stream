@@ -4,12 +4,24 @@ import { Header } from '../components/Header';
 import { Player } from '../components/Player';
 import { Module } from '../components/Module';
 import { useAppSelector } from '../store';
+import { api } from '../lib/axios';
+import { useDispatch } from 'react-redux';
+import { start } from '../store/slices/player';
+import { useEffect } from 'react';
 
 
 
 export function App() {
 
-  const modules = useAppSelector(state => state.player.course.modules);
+  const dispatch = useDispatch();
+
+  const modules = useAppSelector(state => state.player.course?.modules);
+
+  useEffect(() => {
+    api.get('/courses/1').then(response => {
+      dispatch(start(response.data))
+    });
+  }, [])
 
   return (
 
@@ -41,7 +53,7 @@ export function App() {
           overflow-y-scroll scrollbar-thin scrollbar-track-zinc-950 scrollbar-thumb-zinc-800"
         >
           {
-            modules.map((module, index) => (
+            modules && modules.map((module, index) => (
 
               <Module 
                 key={module.id}

@@ -5,3 +5,6 @@ to make readme.md
 - tailwind ( Post-Css )
 - React Player
 - lucide-react
+- Unit Testing
+- API: Json-Server 
+- axios
